@@ -1,0 +1,13 @@
+# Node modules
+node_modules/
+
+# Build folder
+build/
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# OS files
+.DS_Store
+

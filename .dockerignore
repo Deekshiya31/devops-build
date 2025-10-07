@@ -1,0 +1,12 @@
+# Node modules (not needed inside image)
+node_modules
+
+# Git files
+.git
+
+# Logs
+*.log
+
+# Local build files (optional, if you rebuild inside container)
+*.env
+
