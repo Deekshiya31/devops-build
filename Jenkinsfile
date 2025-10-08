@@ -51,7 +51,7 @@ pipeline {
     }
 
     stage('Push & Deploy Prod') {
-      when { branch 'master' } 
+      when { branch 'main' } 
       steps {
         script {
           // 1. TAG FOR PROD

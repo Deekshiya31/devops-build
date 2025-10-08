@@ -1,14 +1,20 @@
 #!/bin/bash
 
-# Variables
-DOCKER_USER="deekshiya31"
-PROD_REPO_TAG="$DOCKER_USER/prod:latest"
+# 1. STOP the existing container (ignore errors if it's not running)
+docker stop react-app || true
 
-# Stop old container if running
-docker rm -f react-app || true
+# 2. REMOVE the stopped container (ignore errors if it doesn't exist)
+docker rm react-app || true
 
-# Pull latest image from DockerHub prod repo
-docker pull $PROD_REPO_TAG
+# --- DOCKER LOGIN FOR REMOTE PULL ---
+# Use your Docker Hub Username and Password to authorize the pull
+# REPLACE <YOUR_PASSWORD> with your actual Docker Hub Password
+echo "Goodwork@2025" | docker login -u deekshiya31 --password-stdin
+# ------------------------------------
 
-# Run new container
-docker run -d -p 80:80 --name react-app $PROD_REPO_TAG
+# 3. PULL and RUN the new image
+# The 'docker run' command will automatically pull the image first
+docker run -d --name react-app -p 80:80 deekshiya31/prod:latest
+
+# 4. Log out after pull/run (Good practice for security)
+docker logout
